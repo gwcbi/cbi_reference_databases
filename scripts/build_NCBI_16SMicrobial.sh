@@ -26,12 +26,12 @@ checkindex () {
 }
 
 #--- Create and move to build directory
-builddir=$rroot/NCBI_rep_genomes/$build
+builddir=$rroot/NCBI_16SMicrobial/$build
 mkdir -p $builddir && cd $builddir
 mkdir -p Archive
 
-#--- Download rep_genome databses from NCBI
-rsync --partial --progress -iav ftp.ncbi.nlm.nih.gov::blast/db/ref_*_rep_genomes*.tar.gz Archive/
+#--- Download 16SMicrobial databses from NCBI
+rsync --partial --progress -iav ftp.ncbi.nlm.nih.gov::blast/db/16SMicrobial*.tar.gz Archive/
 
 #--- Process each database
 for f in Archive/*.tar.gz; do
@@ -63,4 +63,3 @@ for f in Archive/*.tar.gz; do
 done
 
 echo -e '*\n!.gitignore' > .gitignore
-
