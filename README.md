@@ -69,3 +69,25 @@ Where `build_id` is a build identifier. A new directory will be created within
 | build date    | build ID    | latest |
 | ------------- | ----------- | ------ |
 | Aug. 6, 2016  | 20160806    | yes    |
+
+
+## plasmaDB
+
+The plasma database contains reference sequences for organisms that may appear in human plasma.
+
+**Usage:**
+
+```bash
+. scripts/build_plasmaDB.sh [build_id]
+```
+
+Where `build_id` is a build identifier. Before building, the build directory should contain files with information about the sequences to be included in the database. These can be:
+
+1. **Accessions:** Each file contains a list of accession numbers, one per line. The filename for these files should begin with `acc.*`. The name of the resulting database will be the file name with the beginning and extension removed. For example, if provided the file `acc.human_viruses.txt`, the build script will create a database named `human_viruses`.
+2. **Sequences:** Each file is a multi-fasta files from the same taxonomic group. The filename should have the extension `*.fasta` and should begin with the taxonomy ID to be added to the sequence names. For example, if provided the file `11103.HCV_references.fasta`, the build script will add the taxon ID `11103` to all sequences and create a database named `HCV_references`.
+
+| build date     | build ID    | latest | comment |
+| -------------- | ----------- | ------ | ------- |
+| Aug. 6, 2016   | 20160806    | no     |
+| Jan. 17, 2017  | 20170117    | yes    | separate DB for HCV, HIV, and human viruses |
+
