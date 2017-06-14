@@ -35,3 +35,14 @@ cd /lustre/groups/cbi/shared/Databases/plasmaDB && \
     rm -f latest && \
     ln -s $(ls . | sort | tail -n1) latest && \
     cd $rroot
+
+# Sync all builds
+mkdir -p /lustre/groups/cbi/shared/Databases/kraken
+for build in kraken/????????; do
+    rsync -av $build /lustre/groups/cbi/shared/Databases/$build
+done
+
+cd /lustre/groups/cbi/shared/Databases/kraken && \
+    rm -f latest && \
+    ln -s $(ls . | sort | tail -n1) latest && \
+    cd $rroot

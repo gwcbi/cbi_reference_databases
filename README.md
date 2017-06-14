@@ -91,3 +91,26 @@ Where `build_id` is a build identifier. Before building, the build directory sho
 | Aug. 6, 2016   | 20160806    | no     |
 | Jan. 17, 2017  | 20170117    | yes    | separate DB for HCV, HIV, and human viruses |
 
+
+## kraken
+
+This database is the standard kraken database (built by `kraken-build`).
+
+Here is how to submit a job to create the database:
+
+```bash
+sbatch -N 1 -p short,gpu -t 720 <<EOF
+#! /bin/bash
+umask 0002
+module load kraken/dev
+cd /groups/cbi/shared/References/cbi_reference_databases.git/kraken
+kraken-build --standard --threads 16 --db [build_id]
+
+EOF
+
+```
+
+| build date     | build ID    | latest | comment |
+| -------------- | ----------- | ------ | ------- |
+| Jun. 14, 2017   | 20170614    | yes     |
+
