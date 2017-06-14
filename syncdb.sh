@@ -39,7 +39,7 @@ cd /lustre/groups/cbi/shared/Databases/plasmaDB && \
 ### kraken database ######################################################################
 mkdir -p /lustre/groups/cbi/shared/Databases/kraken
 for build in kraken/????????; do
-    rsync -av $build /lustre/groups/cbi/shared/Databases/$build
+    rsync -av $build/* /lustre/groups/cbi/shared/Databases/$build
 done
 
 cd /lustre/groups/cbi/shared/Databases/kraken && \
