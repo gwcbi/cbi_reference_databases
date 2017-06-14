@@ -112,5 +112,37 @@ EOF
 
 | build date     | build ID    | latest | comment |
 | -------------- | ----------- | ------ | ------- |
-| Jun. 14, 2017   | 20170614    | yes     |
+| Jun. 14, 2017   | 20170614    | yes     | |
 
+
+## centrifuge
+
+This database is for centrifuge and was downloaded from [CCB](https://ccb.jhu.edu/software/centrifuge/manual.shtml)
+
+```bash
+mkdir -p [build_id] && cd [build_id]
+wget ftp://ftp.ccb.jhu.edu/pub/infphilo/centrifuge/data/p_compressed.tar.gz
+wget ftp://ftp.ccb.jhu.edu/pub/infphilo/centrifuge/data/p_compressed+h+v.tar.gz
+wget ftp://ftp.ccb.jhu.edu/pub/infphilo/centrifuge/data/p+h+v.tar.gz
+wget ftp://ftp.ccb.jhu.edu/pub/infphilo/centrifuge/data/nt.tar.gz
+
+tar xzf p_compressed.tar.gz
+tar xzf p_compressed+h+v.tar.gz
+tar xzf p+h+v.tar.gz
+tar xzf nt.tar.gz
+```
+
+| build date     | build ID    | latest | comment |
+| -------------- | ----------- | ------ | ------- |
+| Dec. 6, 2016   | 20161206   | yes     | |
+
+
+
+There are 4 databases included with the Dec. 6, 2016 build:
+
+| Contents     | Name    | Size |
+| -------------- | ----------- | ------ |
+| Bacteria, Archaea (compressed) |  p_compressed | 4.4 GB |
+| Bacteria, Archaea, Viruses, Human (compressed) | p_compressed+h+v | 5.4 GB |
+| Bacteria, Archaea, Viruses, Human	| p+h+v | 7.9 GB |
+|  NCBI nucleotide non-redundant sequences | nt | 50GB |
