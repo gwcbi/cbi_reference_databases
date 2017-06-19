@@ -94,26 +94,39 @@ Where `build_id` is a build identifier. Before building, the build directory sho
 
 ## kraken
 
-This database is the standard kraken database (built by `kraken-build`).
+Databases built for kraken, see [manual here](http://ccb.jhu.edu/software/kraken/MANUAL.html).
 
-Here is how to submit a job to create the database:
+**Usage:**
+
+Full kraken databases are built using `scripts/build_kraken.sh`:
 
 ```bash
-sbatch -N 1 -p short,gpu -t 720 <<EOF
-#! /bin/bash
-umask 0002
-module load kraken/dev
-cd /groups/cbi/shared/References/cbi_reference_databases.git/kraken
-kraken-build --standard --threads 16 --db [build_id]
+. scripts/build_kraken.sh [build_id]
+```
 
-EOF
+This will create several `sbatch` jobs that will download and build the databases.
 
+We have also downloaded MiniKrakenDB, which is a pre-built 4 GB database constructed from complete bacterial, archaeal, and viral genomes in RefSeq (as of Dec. 8, 2014).
+
+```bash
+wget http://ccb.jhu.edu/software/kraken/dl/minikraken.tgz
+tar xzf minikraken.tgz
 ```
 
 | build date     | build ID    | latest | comment |
 | -------------- | ----------- | ------ | ------- |
-| Jun. 14, 2017   | 20170614    | yes     | |
+| Jun. 14, 2017   | 20170614    | yes     | See below for available databases|
 
+The Jun. 14, 2017 build contains the following databases:
+
+| Contents     | Name    | Size (of *.kdb) |
+| -------------- | ----------- | ------ |
+| MiniKrakenDB (Bacteria, Archaea, Viruses)  |  minikraken_20141208 | 3.4 GB |
+| Bacteria, Archaea | p | 66 GB |
+| Viruses	| v | 1.6 GB |
+| Human	| h | 28 GB |
+| Bacteria, Archaea, Viruses | p+v | 68 GB |
+| Bacteria, Archaea, Viruses, Human	| p+h+v | 97 GB |
 
 ## centrifuge
 
@@ -134,7 +147,7 @@ tar xzf nt.tar.gz
 
 | build date     | build ID    | latest | comment |
 | -------------- | ----------- | ------ | ------- |
-| Dec. 6, 2016   | 20161206   | yes     | |
+| Dec. 6, 2016   | 20161206   | yes     | See below for available databases |
 
 
 
