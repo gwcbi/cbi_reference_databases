@@ -1,6 +1,6 @@
 # CBI Reference Databases
 
-## Reference and representative genomes
+## NCBI_rep_genomes
 
 [Recently](https://www.ncbi.nlm.nih.gov/news/10-11-2016-ncbi-minute-new-blast-dbs/)
 NCBI released new BLAST databases containing NCBI-selected Reference and Representative
@@ -41,7 +41,7 @@ BLAST databases dated Oct. 27, 2016 was `20161027`.
 | ------------- | ----------- | ------ |
 | Oct. 27, 2016 | 20161027    | yes    |
 
-## 16S Microbial
+## NCBI_16SMicrobial
 
 The 16S microbial databases contain Bacterial and Archaeal 16S rRNA sequences
 from the [NCBI RefSeq targeted loci project](https://www.ncbi.nlm.nih.gov/refseq/targetedloci/) (BioProject [33175](https://www.ncbi.nlm.nih.gov/bioproject/33175)).
@@ -70,6 +70,29 @@ Where `build_id` is a build identifier. A new directory will be created within
 | ------------- | ----------- | ------ |
 | Aug. 6, 2016  | 20160806    | yes    |
 
+## NCBI_rep_protozoa
+
+Contains protozoa representative genomes.
+
+### Building the databases
+
+`build_NCBI_rep_protozoan.sh` is a script for automatically downloading and 
+building the databases.
+
+**Usage:**
+
+```bash
+. scripts/build_NCBI_rep_protozoan.sh [build_id]
+```
+
+Where `build_id` is a build identifier. A new directory will be created within 
+`NCBI_rep_protozoa` with the build ID.
+
+### Available builds
+
+| build date    | build ID    | latest |
+| ------------- | ----------- | ------ |
+| Nov. 28, 2017  | 20171128    | yes    |
 
 ## plasmaDB
 

@@ -25,6 +25,17 @@ cd /lustre/groups/cbi/shared/Databases/NCBI_16SMicrobial && \
     ln -s $(ls . | sort | tail -n1) latest && \
     cd $rroot
 
+### NCBI_rep_protozoa ####################################################################
+mkdir -p /lustre/groups/cbi/shared/Databases/NCBI_rep_protozoa
+for build in NCBI_rep_protozoa/????????; do
+    rsync -av $build/*.bt2 /lustre/groups/cbi/shared/Databases/$build
+done
+
+cd /lustre/groups/cbi/shared/Databases/NCBI_rep_protozoa && \
+    rm -f latest && \
+    ln -s $(ls . | sort | tail -n1) latest && \
+    cd $rroot
+
 ### plasmaDB #############################################################################
 mkdir -p /lustre/groups/cbi/shared/Databases/plasmaDB
 for build in plasmaDB/????????; do
@@ -32,6 +43,17 @@ for build in plasmaDB/????????; do
 done
 
 cd /lustre/groups/cbi/shared/Databases/plasmaDB && \
+    rm -f latest && \
+    ln -s $(ls . | sort | tail -n1) latest && \
+    cd $rroot
+
+### cfDB #############################################################################
+mkdir -p /lustre/groups/cbi/shared/Databases/cfDB
+for build in cfDB/????????; do
+    rsync -av $build/*.bt2 /lustre/groups/cbi/shared/Databases/$build
+done
+
+cd /lustre/groups/cbi/shared/Databases/cfDB && \
     rm -f latest && \
     ln -s $(ls . | sort | tail -n1) latest && \
     cd $rroot
