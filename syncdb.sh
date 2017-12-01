@@ -35,6 +35,28 @@ cd /lustre/groups/cbi/shared/Databases/NCBI_rep_protozoa && \
     rm -f latest && \
     ln -s $(ls . | sort | tail -n1) latest && \
     cd $rroot
+    
+### NCBI_rep_fungi #######################################################################
+mkdir -p /lustre/groups/cbi/shared/Databases/NCBI_rep_fungi
+for build in NCBI_rep_fungi/????????; do
+    rsync -av $build/*.bt2 /lustre/groups/cbi/shared/Databases/$build
+done
+
+cd /lustre/groups/cbi/shared/Databases/NCBI_rep_fungi && \
+    rm -f latest && \
+    ln -s $(ls . | sort | tail -n1) latest && \
+    cd $rroot
+
+### wormbase_parasite #######################################################################
+mkdir -p /lustre/groups/cbi/shared/Databases/wormbase_parasite
+for build in wormbase_parasite/????????; do
+    rsync -av $build/*.bt2* /lustre/groups/cbi/shared/Databases/$build
+done
+
+cd /lustre/groups/cbi/shared/Databases/wormbase_parasite && \
+    rm -f latest && \
+    ln -s $(ls . | sort | tail -n1) latest && \
+    cd $rroot
 
 ### plasmaDB #############################################################################
 mkdir -p /lustre/groups/cbi/shared/Databases/plasmaDB
@@ -47,7 +69,7 @@ cd /lustre/groups/cbi/shared/Databases/plasmaDB && \
     ln -s $(ls . | sort | tail -n1) latest && \
     cd $rroot
 
-### cfDB #############################################################################
+### cfDB #################################################################################
 mkdir -p /lustre/groups/cbi/shared/Databases/cfDB
 for build in cfDB/????????; do
     rsync -av $build/*.bt2 /lustre/groups/cbi/shared/Databases/$build
@@ -79,3 +101,16 @@ cd /lustre/groups/cbi/shared/Databases/centrifuge && \
     rm -f latest && \
     ln -s $(ls . | sort | tail -n1) latest && \
     cd $rroot
+
+### plant marker database ################################################################
+mkdir -p /lustre/groups/cbi/shared/Databases/plant_markers
+for build in plant_markers/????????; do
+    rsync -av $build/*.bt2 /lustre/groups/cbi/shared/Databases/$build
+done
+
+cd /lustre/groups/cbi/shared/Databases/plant_markers && \
+    rm -f latest && \
+    ln -s $(ls . | sort | tail -n1) latest && \
+    cd $rroot
+    
+

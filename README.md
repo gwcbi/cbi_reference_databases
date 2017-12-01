@@ -94,6 +94,57 @@ Where `build_id` is a build identifier. A new directory will be created within
 | ------------- | ----------- | ------ |
 | Nov. 28, 2017  | 20171128    | yes    |
 
+
+## NCBI_rep_fungi
+
+Contains fungal representative genomes.
+
+### Building the databases
+
+`build_NCBI_rep_fungi.sh` is a script for automatically downloading and 
+building the databases.
+
+**Usage:**
+
+```bash
+. scripts/build_NCBI_rep_fungi.sh [build_id]
+```
+
+Where `build_id` is a build identifier. A new directory will be created within 
+`NCBI_rep_fungi` with the build ID.
+
+### Available builds
+
+| build date    | build ID    | latest |
+| ------------- | ----------- | ------ |
+| Nov. 28, 2017  | 20171128    | yes    |
+
+
+## wormbase_parasite
+
+Contains a parasitic genomes database from wormbase.
+
+### Building the databases
+
+`build_wormbase_parasite.sh` is a script for automatically downloading and 
+building the databases.
+
+**Usage:**
+
+```bash
+. scripts/build_wormbase_parasite.sh [build_id]
+```
+
+Where `build_id` is a build identifier. A new directory will be created within 
+`wormbase_parasite` with the build ID.
+
+### Available builds
+
+| build date    | build ID    | latest |
+| ------------- | ----------- | ------ |
+| Nov. 28, 2017  | 20171128    | yes    |
+
+
 ## plasmaDB
 
 The plasma database contains reference sequences for organisms that may appear in human plasma.
@@ -182,3 +233,37 @@ There are 4 databases included with the Dec. 6, 2016 build:
 | Bacteria, Archaea, Viruses, Human (compressed) | p_compressed+h+v | 5.4 GB |
 | Bacteria, Archaea, Viruses, Human	| p+h+v | 7.9 GB |
 |  NCBI nucleotide non-redundant sequences | nt | 50GB |
+
+
+## plant markers
+
+Contains sequences for plant markers: trnH-psbA, ITS2, and rbcL.
+
+PLEASE NOTE:
+This does not download from an FTP site, because there wasn't one. 
+Information regarding where each marker came from is in the script `build_plant_markers.sh`.
+
+**Usage:**
+
+```bash
+. scripts/build_plant_markers.sh [build_id]
+```
+
+Where `build_id` is a build identifier. A new directory will be created within 
+`plant_markers` with the build ID.
+
+### Available builds
+
+| build date     | build ID    | latest | comment |
+| -------------- | ----------- | ------ | ------- |
+| Nov. 29, 2017  | 20171129    | yes    | See below for available databases|
+
+The Nov. 29, 2017 build contains the following databases:
+
+| Contents     | Name    | Size (of *.kdb) |
+| -------------- | ----------- | ------ |
+| trnH-psbA |  trnH_psbA_marker_seqs | 11 MB |
+| ITS2 | ITS2_marker_seqs | 1.9 GB |
+| rbcL	| rbcL_marker_seqs | 409 MB |
+
+
