@@ -39,7 +39,8 @@ BLAST databases dated Oct. 27, 2016 was `20161027`.
 
 | build date    | build ID    | latest |
 | ------------- | ----------- | ------ |
-| Oct. 27, 2016 | 20161027    | yes    |
+| Feb. 2, 2019  | 20190220    | yes    |
+| Oct. 27, 2016 | 20161027    | no     |
 
 ## NCBI_16SMicrobial
 
@@ -140,9 +141,10 @@ Where `build_id` is a build identifier. A new directory will be created within
 
 ### Available builds
 
-| build date    | build ID    | latest |
-| ------------- | ----------- | ------ |
-| Nov. 28, 2017  | 20171128    | yes    |
+| build date    | build ID    | latest | comment |
+| ------------- | ----------- | ------ | ------- |
+| Nov. 28, 2017 | 20171128    | no     | WBPS9   |
+| Mar. 6, 2019  | 20190306    | yes    | WBPS12  |
 
 
 ## plasmaDB
