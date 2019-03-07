@@ -58,6 +58,18 @@ cd /lustre/groups/cbi/shared/Databases/wormbase_parasite && \
     ln -s $(ls . | sort | tail -n1) latest && \
     cd $rroot
 
+### Human Microbiome Prroject ###############################################################
+mkdir -p /lustre/groups/cbi/shared/Databases/HMP
+for build in HMP/????????; do
+    rsync -av $build/*.bt2 /lustre/groups/cbi/shared/Databases/$build
+done
+
+cd /lustre/groups/cbi/shared/Databases/HMP && \
+    rm -f latest && \
+    ln -s $(ls . | sort | tail -n1) latest && \
+    cd $rroot
+
+
 ### plasmaDB #############################################################################
 mkdir -p /lustre/groups/cbi/shared/Databases/plasmaDB
 for build in plasmaDB/????????; do
@@ -113,4 +125,16 @@ cd /lustre/groups/cbi/shared/Databases/plant_markers && \
     ln -s $(ls . | sort | tail -n1) latest && \
     cd $rroot
     
+### centrifuge_NCBI database #############################################################
+mkdir -p /lustre/groups/cbi/shared/Databases/centrifuge_NCBI
+for build in centrifuge_NCBI/????????; do
+    rsync -av $build/centrifuge_*/????????/*.cf /lustre/groups/cbi/shared/Databases/$build
+done
 
+cd /lustre/groups/cbi/shared/Databases/centrifuge_NCBI && \
+    rm -f latest && \
+    ln -s $(ls . | sort | tail -n1) latest && \
+    cd $rroot
+
+
+    
