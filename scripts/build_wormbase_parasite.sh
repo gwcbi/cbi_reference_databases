@@ -8,12 +8,14 @@ umask 0002
 mkdir -p wormbase_parasite/${build}/Archive && cd wormbase_parasite/${build}/Archive
 
 # First parse the directory listing to get available species
-curl -s ftp://ftp.ebi.ac.uk/pub/databases/wormbase/parasite/releases/WBPS9/species/ | tr -s ' ' | cut -f9 -d' ' > SPECIES_EX.txt
+# OLD VERSION: curl -s ftp://ftp.ebi.ac.uk/pub/databases/wormbase/parasite/releases/WBPS9/species/ | tr -s ' ' | cut -f9 -d' ' > SPECIES_EX.txt
+
+curl -s ftp://ftp.ebi.ac.uk/pub/databases/wormbase/parasite/releases/WBPS12/species/ | tr -s ' ' | cut -f9 -d' ' > SPECIES_EX.txt
 
 # Now download the representative genome DNA file for each
 cat SPECIES_EX.txt | while read sp; do
     echo $sp
-    rsync --partial --progress -iav ftp.ebi.ac.uk::pub/databases/wormbase/parasite/releases/WBPS9/species/${sp}/*/*.genomic.fa.gz .
+    rsync --partial --progress --copy-links -iav ftp.ebi.ac.uk::pub/databases/wormbase/parasite/releases/WBPS12/species/${sp}/*/*.genomic.fa.gz .
 done
 
 ls *.gz | cut -d'.' -f1 | sort | uniq > SPECIES.txt
@@ -23,13 +25,13 @@ ls *.gz | cut -d'.' -f1 | sort | uniq > SPECIES.txt
 module load R/current
 
 # you may have to do this if those packages are not istalled:
-# R
-# 58
-# install.packages("taxize")
-# install.packages("magrittr")
-# install.packages("dplyr")
-# quit()
-# n
+#R
+#61
+#install.packages("taxize")
+#install.packages("magrittr")
+#install.packages("dplyr")
+#quit()
+#n
 
 R --slave <<EOF
 library("taxize")
@@ -58,7 +60,11 @@ for p in *.genomic.fa.gz; do
     ti=$(grep "$sp" worms_tids.txt | cut -f2)
     gunzip -c $p | perl -lne 's/^>([\S]+)/>ti|'$ti'|ref|'${sn}.${bd}.'\1| '$sp' bioProject='$bd'/; print $_;' > ti_${fn%.*}
     echo -e "$sp\t$sn\t$bd\t$ti" >> mapping.txt
+    echo "Completed: "$p
 done
+
+#--- Create a list of all the ti files
+ls ti*.fa > all_ti_files.txt
 
 #--- Create fasta with all sequences
 
@@ -67,6 +73,7 @@ cat Archive/ti_*.fa > wormbase_parasite_genomes.fna
 
 # splitting the species file because combining all the sequences creates too big of file
 split -d -b 4G wormbase_parasite_genomes.fna tmp_wormbase_parasite_genomes_
+
 
 # making sure a species is not split between files
 start_line=0
